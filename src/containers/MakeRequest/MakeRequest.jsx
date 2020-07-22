@@ -1,25 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import RequestBar from '../../components/RequestBar/RequestBar';
 
-const MakeRequest = () => {
+const MakeRequest = ({ passBack }) => {
   const [url, setUrl] = useState('');
-  const [requestType, setRequestType] = useState('');
+  const [requestType, setRequestType] = useState('GET');
 
-  const [data, setData] = useState(null);
+  // const [data, setData] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch(url)
+    fetch(url, { method: requestType })
       .then(res => res.json())
-      .then(json => setData(json));
+      .then(json => passBack(json));
   };
+
+  // useEffect(() => {
+  //   passBack(data);
+  //   // return () => {
+  //   //   cleanup
+  //   // }
+  // }, [data]);
 
   return <section>
     <h2>New Request</h2>
     <RequestBar
-      onChange={e => setUrl(e.target.value)}
-      onClick={e => setRequestType(e.target.value)}
+      onUrlChange={e => setUrl(e.target.value)}
+      onTypeChange={e => setRequestType(e.target.value)}
       onSubmit={e => handleSubmit(e)} />
   </section>;
 };

@@ -1,13 +1,13 @@
 import React from 'react'
 
-const RequestBar = ({ onChange, onClick, onSubmit }) => (
+const RequestBar = ({ onUrlChange, onTypeChange, onSubmit }) => (
   <>
     <form onSubmit={onSubmit}>
-      <input type="url" name="url" onChange={onChange} />
-      <input type="button" name="requestType" onClick={onClick} value="GET" />
-      <input type="button" name="requestType" onClick={onClick} value="POST" />
-      <input type="button" name="requestType" onClick={onClick} value="PUT" />
-      <input type="button" name="requestType" onClick={onClick} value="DELETE" />
+      <input type="url" name="url" onChange={onUrlChange} />
+      <input type="button" name="requestType" onClick={onTypeChange} value="GET" />
+      <input type="button" name="requestType" onClick={onTypeChange} value="POST" />
+      <input type="button" name="requestType" onClick={onTypeChange} value="PUT" />
+      <input type="button" name="requestType" onClick={onTypeChange} value="DELETE" />
       <input type="submit" />
     </form>
   </>
