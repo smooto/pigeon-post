@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const ViewHistory = ({ history }) => (
   <section>
@@ -17,5 +18,9 @@ const ViewHistory = ({ history }) => (
     </div>
   </section>
 );
+
+ViewHistory.propTypes = {
+  history: PropTypes.array.isRequired
+};
 
 export default ViewHistory;

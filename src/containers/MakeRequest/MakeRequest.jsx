@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import RequestBar from '../../components/RequestBar/RequestBar';
 
 const MakeRequest = ({ passData, passRequest }) => {
@@ -38,9 +39,14 @@ const options = (method, body) => {
 
   object.body = body;
 
-  console.log(object);
+  // console.log(object);
 
   return object;
+};
+
+MakeRequest.propTypes = {
+  passData: PropTypes.func.isRequired,
+  passRequest: PropTypes.func.isRequired
 };
 
 export default MakeRequest;

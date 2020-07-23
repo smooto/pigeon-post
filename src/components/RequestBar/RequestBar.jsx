@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const RequestBar = ({ onUrlChange, onTypeChange, onBodyChange, onSubmit }) => (
   <>
@@ -41,5 +42,12 @@ const RequestBar = ({ onUrlChange, onTypeChange, onBodyChange, onSubmit }) => (
     </form>
   </>
 );
+
+RequestBar.propTypes = {
+  onUrlChange: PropTypes.func.isRequired,
+  onTypeChange: PropTypes.func.isRequired,
+  onBodyChange: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired
+};
 
 export default RequestBar;
