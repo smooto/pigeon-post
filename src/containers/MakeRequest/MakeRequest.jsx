@@ -4,13 +4,14 @@ import RequestBar from '../../components/RequestBar/RequestBar';
 const MakeRequest = ({ passData, passRequest }) => {
   const [url, setUrl] = useState('');
   const [requestType, setRequestType] = useState('GET');
+  const [body, setBody] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     passRequest({ url, requestType });
 
-    fetch(url, { method: requestType })
+    fetch(url, options(requestType, body))
       .then(res => res.json())
       .then(json => passData(json));
   };
@@ -20,8 +21,24 @@ const MakeRequest = ({ passData, passRequest }) => {
     <RequestBar
       onUrlChange={e => setUrl(e.target.value)}
       onTypeChange={e => setRequestType(e.target.value)}
+      onBodyChange={e => setBody(e.target.value)}
       onSubmit={e => handleSubmit(e)} />
   </section>;
+};
+
+const options = (method, body) => {
+  const object = {
+    method,
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+
+  if(method === 'GET') return object;
+
+  object.body = JSON.stringify(body);
+
+  return object;
 };
 
 export default MakeRequest;
