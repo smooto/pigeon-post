@@ -36,7 +36,9 @@ const options = (method, body) => {
 
   if(method === 'GET') return object;
 
-  object.body = JSON.stringify(body);
+  object.body = body;
+
+  console.log(object);
 
   return object;
 };
