@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Button from '../MethodButton/Button';
 
 const RequestBar = ({ onUrlChange, onTypeChange, onBodyChange, onSubmit }) => (
   <>
@@ -16,7 +17,11 @@ const RequestBar = ({ onUrlChange, onTypeChange, onBodyChange, onSubmit }) => (
 
       <label>
         Request type
-        <input
+        <Button value={'GET'} handleClick={onTypeChange} />
+        <Button value={'POST'} handleClick={onTypeChange} />
+        <Button value={'PUT'} handleClick={onTypeChange} />
+        <Button value={'DELETE'} handleClick={onTypeChange} />
+        {/* <input
           type="button"
           name="requestType"
           onClick={onTypeChange}
@@ -35,7 +40,7 @@ const RequestBar = ({ onUrlChange, onTypeChange, onBodyChange, onSubmit }) => (
           type="button"
           name="requestType"
           onClick={onTypeChange}
-          value="DELETE" />
+          value="DELETE" /> */}
       </label><br />
 
       <input type="submit" />
