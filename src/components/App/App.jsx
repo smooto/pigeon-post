@@ -6,10 +6,14 @@ import ViewResults from '../../containers/ViewResults/ViewResults';
 
 export default function App() {
   const [data, setData] = useState([]);
+  const [history, setHistory] = useState([]);
 
   return <div className={styles.App}>
-    <MakeRequest passBack={data => setData(data)} />
-    <ViewHistory />
+    <MakeRequest
+      passData={data => setData(data)}
+      passRequest={request => setHistory(history.concat(request))}
+    />
+    <ViewHistory history={history} />
     <ViewResults data={data} />
   </div>;
 }
