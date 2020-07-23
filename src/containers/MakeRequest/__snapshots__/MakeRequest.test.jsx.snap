@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MakeRequest component renders MakeRequest 1`] = `
+<section>
+  <h2>
+    New Request
+  </h2>
+  <RequestBar
+    onBodyChange={[Function]}
+    onSubmit={[Function]}
+    onTypeChange={[Function]}
+    onUrlChange={[Function]}
+  />
+</section>
+`;
