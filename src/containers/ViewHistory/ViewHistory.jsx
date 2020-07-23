@@ -1,16 +1,18 @@
 import React from 'react';
 
-const ViewHistory = () => (
+const ViewHistory = ({ history }) => (
   <section>
     <h2>Request History</h2>
     <div>
       <ul>
-        <li>
-          example request url
-        </li>
-        <li>
-          example request url
-        </li>
+        {
+          history.map((request, i) => (
+            <li key={i}>
+              <p>{request.requestType}</p>
+              <p>{request.url}</p>
+            </li>
+          ))
+        }
       </ul>
     </div>
   </section>
