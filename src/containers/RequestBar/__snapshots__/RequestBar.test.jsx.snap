@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RequestBar component renders RequestBar 1`] = `
+<Fragment>
+  <form
+    onSubmit={[Function]}
+  >
+    <label>
+      URL for the API
+      <input
+        name="url"
+        onChange={[Function]}
+        type="url"
+      />
+    </label>
+    <br />
+    <label>
+      Raw JSON body (for POST or PUT requests)
+      <input
+        name="body"
+        onChange={[Function]}
+        type="textarea"
+      />
+    </label>
+    <br />
+    <label>
+      Request type
+      <input
+        name="requestType"
+        onClick={[Function]}
+        type="button"
+        value="GET"
+      />
+      <input
+        name="requestType"
+        onClick={[Function]}
+        type="button"
+        value="POST"
+      />
+      <input
+        name="requestType"
+        onClick={[Function]}
+        type="button"
+        value="PUT"
+      />
+      <input
+        name="requestType"
+        onClick={[Function]}
+        type="button"
+        value="DELETE"
+      />
+    </label>
+    <br />
+    <input
+      type="submit"
+    />
+  </form>
+</Fragment>
+`;
