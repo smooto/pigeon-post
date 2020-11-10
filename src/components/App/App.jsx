@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './App.css';
-import MakeRequest from '../../containers/MakeRequest/MakeRequest';
+import RequestBar from '../../containers/RequestBar/RequestBar';
 import ViewHistory from '../../containers/ViewHistory/ViewHistory';
 import ViewResults from '../../containers/ViewResults/ViewResults';
 
@@ -9,7 +9,7 @@ export default function App() {
   const [history, setHistory] = useState([]);
 
   return <div className={styles.App}>
-    <MakeRequest
+    <RequestBar
       passData={data => setData(data)}
       passRequest={request => setHistory(history.concat(request))}
     />

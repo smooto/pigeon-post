@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import RequestBar from '../../components/RequestBar/RequestBar';
+import MultiButtons from '../../components/MultiButtons/MultiButtons';
 
-const MakeRequest = ({ passData, passRequest }) => {
+const RequestBar = ({ passData, passRequest }) => {
   const [url, setUrl] = useState('');
   const [requestType, setRequestType] = useState('GET');
   const [body, setBody] = useState(null);
@@ -17,14 +17,25 @@ const MakeRequest = ({ passData, passRequest }) => {
       .then(json => passData(json));
   };
 
-  return <section>
-    <h2>New Request</h2>
-    <RequestBar
-      onUrlChange={e => setUrl(e.target.value)}
-      onTypeChange={e => setRequestType(e.target.value)}
-      onBodyChange={e => setBody(e.target.value)}
-      onSubmit={e => handleSubmit(e)} />
-  </section>;
+  return (
+    <>
+      <form onSubmit={handleSubmit}>
+        <label>
+          URL for the API
+          <input type="url" name="url" onChange={e => setUrl(e.target.value)} />
+        </label><br />
+
+        <label>
+          Raw JSON body (for POST or PUT requests)
+          <input type="textarea" name="body" onChange={e => setBody(e.target.value)} />
+        </label><br />
+
+        <MultiButtons label={'Method'} values={['GET', 'POST', 'PUT', 'DELETE']} passValue={value => setRequestType(value)} />
+
+        <input type="submit" />
+      </form>
+    </>
+  );
 };
 
 const options = (method, body) => {
@@ -44,9 +55,9 @@ const options = (method, body) => {
   return object;
 };
 
-MakeRequest.propTypes = {
+RequestBar.propTypes = {
   passData: PropTypes.func.isRequired,
   passRequest: PropTypes.func.isRequired
 };
 
-export default MakeRequest;
+export default RequestBar;
